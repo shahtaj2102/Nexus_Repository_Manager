@@ -34,7 +34,7 @@ Before starting, make sure you have:
 
 Create a DigitalOcean droplet with **more memory/capacity**, since Nexus requires more resources than the size of the app.
 
-Recommended setup from the lecture notes:
+Recommended setup:
 
 - Create a droplet with enough RAM for Nexus.
 - Allow **port 22** in the firewall for SSH access.
