@@ -1,6 +1,4 @@
-# Nexus_Repository_Manager
-
-# Module 6 - Nexus Repository Manager on DigitalOcean
+# Nexus Repository Manager on DigitalOcean
 
 This repository contains the notes and walkthrough for **Module 6**, where the focus is on installing and configuring **Nexus Repository Manager** on a DigitalOcean droplet, managing firewall access, creating users and roles, and publishing Java artifacts with **Gradle** and **Maven**.
 
