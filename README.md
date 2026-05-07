@@ -32,7 +32,7 @@ Before starting, make sure you have:
 
 ## 1. Create the Droplet
 
-Create a DigitalOcean droplet with **more memory/capacity**, since Nexus requires more resources than a basic lightweight app.
+Create a DigitalOcean droplet with **more memory/capacity**, since Nexus requires more resources than the size of the app.
 
 Recommended setup from the lecture notes:
 
