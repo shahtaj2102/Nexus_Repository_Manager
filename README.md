@@ -141,24 +141,25 @@ http://<droplet-ip>:8081
 Login with:
 
 - Username: `admin`
-- Password file:
+- Password: For first time login nexus letts us to take the password froma file on our machine, which can be found at
 
 ```text
 /opt/sonatype-work/nexus3/admin.password
 ```
 
-Use `cat` or `vim` to read the password file, then sign in through the browser. After the first login, Nexus prompts you to change the password and configure access options.
+Use `cat` or `vim` to read and copy the password file, then sign in through the browser. After the first login, Nexus prompts you to change the password and configure access options.
 
 ## 9. Repository Types in Nexus
 
-The notes identify three main repository types:
+There are three main repository types:
 
 - **Proxy**
 - **Group**
 - **Hosted**
 
-For this module, the artifact upload examples use the **Maven hosted repository** already created by default in Nexus.
+For this module, the artifact upload examples use the **Maven hosted repository** already created by default in Nexus, and it is a **hosted** repository.
 
+# Uploading the Artifact.
 ## 10. Create Users and Roles
 
 Instead of giving developers the admin credentials, create dedicated users and assign only the permissions they need.
