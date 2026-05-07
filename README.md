@@ -111,7 +111,7 @@ Example:
 /opt/nexus-3.91.1-04/bin/nexus start
 ```
 
-To verify that Nexus is running:
+To verify that Nexus is running run any one of these:
 
 ```bash
 ps aux | grep nexus
@@ -124,7 +124,7 @@ If `netstat` is not available, install `net-tools` first:
 sudo apt update && sudo apt install net-tools
 ```
 
-The notes show Nexus running on **port 8081**.
+The outcome from netstat command shows Nexus running on **port 8081**.
 
 ## 7. Open Firewall Access for Nexus
 
