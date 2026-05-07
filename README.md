@@ -44,9 +44,14 @@ Recommended setup:
 
 Nexus requires **Java 17**, so install that version before starting the setup.
 
+```bash
+sudo apt update
+sudo apt install openjdk-17-jdk -y
+```
+
 ## 3. Download and Extract Nexus
 
-Download Nexus into the `/opt` directory using the archive URL from the Sonatype site.
+Download Nexus using the archive URL from the Sonatype site. Make sure to pick up the package URL that matches systems specifications. It will be downloaded in the `/opt` directory ,  Then untar the file.
 
 Example flow:
 
@@ -71,7 +76,7 @@ This folder stores the persistent Nexus data, including:
 - Configuration-generated data
 - Uploaded artifacts
 
-It is also useful for **backup**, because the application can be upgraded independently while preserving stored data.
+It is also useful for **backup**, and the application can be upgraded independently while preserving stored data as we only upgrade the nexus folder.
 
 ## 4. Create a Dedicated Nexus User
 
@@ -88,7 +93,7 @@ chown -R nexus:nexus /opt/sonatype-work
 
 ## 5. Configure Nexus to Run as the Nexus User
 
-Edit the `nexus.rc` file and set:
+Edit or create the `nexus.rc` file and set:
 
 ```bash
 run_as_user="nexus"
