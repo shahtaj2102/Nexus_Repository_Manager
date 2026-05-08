@@ -174,9 +174,9 @@ Lecture flow:
 
 This follows a better security practice than sharing the admin account.
 
-## 11. Publish a JAR with Gradle
+## 11. Publishing a JAR with Gradle
 
-Gradle and Maven both publish Java artifacts in **Maven format**, so Nexus can store them in Maven repositories.
+Side-Note: Gradle and Maven both publish Java artifacts in **Maven format**, so Nexus can store them in Maven repositories.
 
 ### Add publishing support
 
@@ -233,15 +233,24 @@ In `build.gradle`, define the version:
 version = '1.0-SNAPSHOT'
 ```
 
+This is the line of code in our `maven-publish` plugin that will be affected by these configrations.
+
+```
+artifact("build/libs/my-app-$version" + ".jar") 
+```
+
+
 ### Build and publish
 
-Build the JAR:
+Next we build the JAR artifact using:
 
 ```bash
 gradle build
 ```
 
-Then publish it:
+A build folder will be generated which will have the .jar file.
+
+Then publish it using:
 
 ```bash
 gradle publish
@@ -249,9 +258,9 @@ gradle publish
 
 The `publish` task is available because of the `maven-publish` plugin configuration.
 
-After publishing, log in to Nexus and browse the Maven snapshot repository to confirm the uploaded `.jar` and generated metadata files.
+After publishing, log in to Nexus and browse the Maven snapshot repository to confirm the uploaded `.jar` and generated metadata files (metadata files are created by nexus to store our artifact related information we just upload the single artifact file).
 
-## 12. Publish a JAR with Maven
+## 12. Publishing a JAR with Maven
 
 For Maven projects, configure deployment in `pom.xml`.
 
@@ -278,7 +287,7 @@ For Maven projects, configure deployment in `pom.xml`.
 
 ### Configure Maven credentials
 
-Create `settings.xml` inside the `.m2` directory:
+Create `settings.xml` inside the `.m2` directory on our machine with the code (it is a hidden folder in our users home directory):
 
 ```xml
 <settings>
@@ -292,6 +301,8 @@ Create `settings.xml` inside the `.m2` directory:
 </settings>
 ```
 
+This helps push the username and password credentials without hardcoding it into our code.
+
 The repository `id` in `settings.xml` must match the `id` in `pom.xml`.
 
 ### Build and deploy
@@ -302,6 +313,8 @@ Package the project:
 mvn package
 ```
 
+This will create the **target** folder which will have our .jar file with all the values we defined in pom.xml.
+
 Deploy the artifact:
 
 ```bash
@@ -309,6 +322,8 @@ mvn deploy
 ```
 
 After deployment, check the Nexus browse view and confirm the artifact appears inside the snapshot repository.
+
+#Nexus Features.
 
 ## 13. Nexus REST API
 
@@ -339,7 +354,8 @@ Blob stores can use:
 - Local file storage
 - Cloud storage such as AWS S3
 
-The default blob store is file-based storage on the server.
+The default blob store is file-based storage on the server. On our VM it can be found in Sonatype-work/nexus3 directory under the name of blobs which inside it will have the directory names that we have configured as the names of blob storages that we create.
+
 
 ### Components vs assets
 
@@ -408,7 +424,3 @@ After completing this module, you should understand how to:
 - Port `22` must remain open for SSH.
 - `sonatype-work` contains the important persistent data and should be considered for backup.
 - Avoid storing usernames and passwords directly in project files.
-
-## Source
-
-This README was created from the user’s Module 6 lecture notes and follows the style of a practical lab repository README. The Nexus installation flow aligns with DigitalOcean app deployment concepts in which code or services are deployed from a server environment and exposed through configured ports and app access rules [1][2].
