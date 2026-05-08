@@ -2,7 +2,7 @@
 
 This repository contains the notes and walkthrough for **Module 6**, where the focus is on installing and configuring **Nexus Repository Manager** on a DigitalOcean droplet, managing firewall access, creating users and roles, and publishing Java artifacts with **Gradle** and **Maven**.Projects added to the repository can be used to replicate the below steps.
 
-The module builds on the DigitalOcean deployment workflow from the earlier lecture repo and moves into artifact management with Nexus.
+The module builds on the DigitalOcean deployment workflow from the earlier repository and moves into artifact management with Nexus.
 
 ## Objectives
 
@@ -423,4 +423,4 @@ After completing this module, you should understand how to:
 - Port `8081` must be opened to access the Nexus web interface.
 - Port `22` must remain open for SSH.
 - `sonatype-work` contains the important persistent data and should be considered for backup.
-- Avoid storing usernames and passwords directly in project files.
+- Avoid using usernames and passwords directly in project files.
