@@ -166,9 +166,9 @@ Instead of giving developers the admin credentials, create dedicated users and a
 
 Lecture flow:
 
-1. Go to **Settings** and create a new user.
-2. Go to **Security > Roles** and create a role.
-3. Assign permissions for the target repositories.
+1. Go to **Security > Roles** and create a role .
+2. Assign permissions for the target repositories.
+3. Go to **Settings** and create a new user.
 4. Attach the role to the user.
 5. Use that user’s credentials in Gradle or Maven.
 
@@ -180,7 +180,7 @@ Gradle and Maven both publish Java artifacts in **Maven format**, so Nexus can s
 
 ### Add publishing support
 
-In `build.gradle`, enable publishing with the `maven-publish` plugin:
+In `build.gradle`, we enable publishing with the `maven-publish` plugin:
 
 ```groovy
 apply plugin: 'maven-publish'
@@ -197,24 +197,27 @@ publishing {
     repositories {
         maven {
             url = uri("http://your-repository-url")
-            allowInsecureProtocol = true
+            allowInsecureProtocol = true           #we add this line because we are not using a HTTPS connection for our repository.
             credentials {
-                username project.repoUser
+                username project.repoUser          #these are being referred from gradle.properties file
                 password project.repoPassword
             }
         }
     }
 }
 ```
+adding this to our file gives us the ability to call the `maven-publish` plugin as we have provided all the necessary arguments/information required to publish our file.
 
 ### Store credentials safely
 
-Do not hardcode credentials in `build.gradle`. Put them in `gradle.properties` instead:
+Do not hardcode credentials in `build.gradle` as we will be uploading that file and this will make our credentials available to anyone who can access this file. Instead we put them in `gradle.properties` file:
 
 ```properties
 repoUser=username
 repoPassword=xxxxx
 ```
+
+This is what it will/should look like.
 
 ### Configure the project name and version
 
