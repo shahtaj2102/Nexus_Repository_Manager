@@ -83,3 +83,15 @@ mvn deploy
 # Verify
 curl -u user:password -X GET 'http://<nexus-ip>:8081/service/rest/v1/repositories'
 ```
+
+
+## Notes & Limitations
+
+Java 17 is required for this Nexus version specifically. Ports 8081 and 22 need to stay open on the droplet; everything else stays closed. This lab runs Nexus over HTTP, which is why the insecure-protocol flags show up: a production setup would put HTTPS in front of it (reverse proxy or Nexus's own SSL config). `sonatype-work` is the one directory that actually matters for backups.
+
+## Related Projects
+
+This sits in the middle of a small pipeline I built while working through DigitalOcean, Docker, and Nexus together. [`web-app-on-digitalocean`](https://github.com/shahtaj2102/web-app-on-digitalocean) covers the droplet, SSH, and firewall fundamentals this project builds on, and [`Docker-and-Containers`](https://github.com/shahtaj2102/Docker-and-Containers) containerizes an app and pushes the image to the Nexus Docker registry set up alongside this one.
+
+---
+Shahtaj Singh Gill - [LinkedIn](https://www.linkedin.com/in/shahtaj-aws-sap-toronto/) / [GitHub](https://github.com/shahtaj2102)
