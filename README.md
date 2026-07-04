@@ -50,3 +50,36 @@ After each publish, I queried the Nexus REST API directly with `curl` (`/service
 
 **8. Understood the storage model**
 Worked through blob stores (where the actual bytes live, local disk here, could be S3), the distinction between a component (the logical published package) and its assets (the individual files under it), and how cleanup policies keep old snapshots from accumulating indefinitely.
+
+## Skills Demonstrated
+
+Linux server provisioning and administration, security hardening through dedicated non-root service accounts and least-privilege role design, firewall and network access control, secrets management (externalized, gitignored credentials rather than hardcoded values), build tool configuration in both Gradle (`build.gradle`, `settings.gradle`) and Maven (`pom.xml`), artifact repository concepts like blob storage and components vs. assets, REST API usage for verification and automation, and technical documentation.
+
+## Repo Structure
+
+```
+.
+├── java-app/         # Gradle-based demo app, publishes via maven-publish
+├── java-maven-app/   # Maven-based demo app, publishes via maven-deploy-plugin
+└── README.md
+```
+
+## Key Commands
+
+```bash
+# Server
+chown -R nexus:nexus /opt/nexus-3.91.1-04 /opt/sonatype-work
+/opt/nexus-3.91.1-04/bin/nexus start
+netstat -lntp
+
+# Gradle
+gradle build
+gradle publish
+
+# Maven
+mvn package
+mvn deploy
+
+# Verify
+curl -u user:password -X GET 'http://<nexus-ip>:8081/service/rest/v1/repositories'
+```
