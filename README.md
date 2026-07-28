@@ -6,7 +6,7 @@ Self-hosted an artifact repository from scratch: provisioned the server, secured
 
 ## Why This Exists
 
-Every team that builds software needs somewhere to store the things it builds, compiled `.jar` files, Docker images, npm packages, with version history, access control, and cleanup policies so it doesn't grow forever. Nexus is one of the standard tools for that. This project was my way of understanding artifact management from the infrastructure side, not just consuming someone else's Artifactory instance.
+Every team that builds software needs somewhere to store the things it builds — compiled `.jar` files, Docker images, npm packages — with version history, access control, and cleanup policies so it doesn't grow forever. Nexus is one of the standard tools for that. This project was my way of understanding artifact management from the infrastructure side, not just consuming someone else's Artifactory instance.
 
 
 ## Workflow
